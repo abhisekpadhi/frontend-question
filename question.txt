@@ -1,0 +1,32 @@
+Question:
+
+URL: https://api.blockchain.info/charts/$chartName?timespan=$timespan&rollingAverage=$rollingAverage&start=$start&format=$format&sampled=$sampled
+
+Method: GET
+Example: https://api.blockchain.info/charts/transactions-per-second?timespan=5weeks&rollingAverage=8hours&format=json
+
+$timespan Duration of the chart, default is 1 year for most charts, 1 week for mempool charts. (Optional)
+$rollingAverage Duration over which the data should be averaged. (Optional)
+$start Datetime at which to start the chart. (Optional)
+$format Either JSON or CSV, defaults to JSON. (Optional)
+$sampled Boolean set to 'true' or 'false' (default 'true'). If true, limits the number of datapoints returned to ~1.5k for performance reasons. (Optional)
+Please note that values for charts can be represented in scientific notation (14,627,700 is represented as 1.46277E7)
+
+Response: 200 OK, application/json
+{
+  "status": "ok",
+  "name": "Confirmed Transactions Per Day",
+  "unit": "Transactions",
+  "period": "day",
+  "description": "The number of daily confirmed Bitcoin transactions.",
+  "values": [
+    {
+      "x": 1442534400, // Unix timestamp (2015-09-18T00:00:00+00:00)
+      "y": 188330.0
+    },
+    ...
+}
+
+You will need to build a frontend with google login, After a user logs in
+show the graph plotted from the above api response. The x is the time axis and
+y is the number of Transactions.
